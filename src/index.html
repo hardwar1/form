@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+@@include('components/page/_1_head.html',{
+'title': 'Многостраничная форма',
+'favicon': 'favicon.ico',
+'favicon192x192': 'images/favicon/android-chrome-192x192.png',
+'favicon512x512': 'images/favicon/android-chrome-512x512.png',
+'favicon16x16': 'images/favicon/favicon-16x16.png',
+'favicon32x32': 'images/favicon/favicon-32x32.png',
+'apple-touch-icon': 'images/favicon/apple-touch-icon.png',
+})
+
+<body>
+  @@include('components/page/_2_header.html')
+  <main class="main">
+
+    <form class="form form-js" enctype="multipart/form-data" >
+      <ul class="progressbar">
+        <li class="progressbar__item progressbar__item--active progressbar__item--text">Содайте свой аккаунт</li>
+        <li class="progressbar__item">Кастомные чекбоксы</li>
+        <li class="progressbar__item">Кастомные радиоточки</li>
+        <li class="progressbar__item">Профили в соцсетях</li>
+        <li class="progressbar__item">Кастомный селект</li>
+        <li class="progressbar__item">Личные данные</li>
+      </ul>
+
+      <fieldset class="form__fieldset form__fieldset--active">
+        <h2 class="fs-title">Создайте свой аккаунт</h2>
+        <h3 class="fs-subtitle">Начните с логина и пароля</h3>
+        <label>
+          <span class="hide">Email</span>
+          <input class="form__input email-js" type="email" data-validate-field="email" name="email" placeholder="Email" required>
+        </label>
+        <label>
+          <span class="hide">Пароль</span>
+          <input class="form__input" type="password" name="pass" data-validate-field="pass" placeholder="Пароль" required>
+        </label>
+        <label>
+          <span class="hide">Подтвердите пароль</span>
+          <input class="form__input" type="password" name="cpass" data-validate-field="cpass" placeholder="Подтвердите пароль" required>
+        </label>
+        <input type="tel" class="form__input tel1" name="tel" data-validate-field="tel" placeholder="+7 (919) 745 7777">
+        <button class="next action-button" type="button">
+          Вперед
+        </button>
+      </fieldset>
+
+      <fieldset class="form__fieldset">
+        <h2 class="fs-title">Кастомные чекбоксы</h2>
+        <h3 class="fs-subtitle">в разных состояниях</h3>
+
+        <label class="form__label">
+          <span class="">Стандартный</span>
+          <input class="form__box" type="checkbox" name="checkbox1" data-validate-field="checkbox1" placeholder="Twitter">
+          <span class="form__fake">
+            <svg>
+              <use xlink:href="images/sprite.svg#checkbox"></use>
+            </svg>
+          </span>
+        </label>
+        <label class="form__label">
+          <span class="">checked</span>
+          <input class="form__box" type="checkbox" name="checkbox2" data-validate-field="checkbox2" placeholder="Twitter" checked required>
+          <span class="form__fake">
+            <svg>
+              <use xlink:href="images/sprite.svg#checkbox"></use>
+            </svg>
+          </span>
+        </label>
+        <label class="form__label">
+          <span class="">disabled</span>
+          <input class="form__box" type="checkbox" name="checkbox3" data-validate-field="checkbox3" placeholder="Twitter" disabled>
+          <span class="form__fake">
+            <svg>
+              <use xlink:href="images/sprite.svg#checkbox"></use>
+            </svg>
+          </span>
+        </label>
+        <label class="form__label">
+          <span class="">checked disabled</span>
+          <input class="form__box" type="checkbox" name="checkbox4" data-validate-field="checkbox4" placeholder="Twitter" checked disabled>
+          <span class="form__fake">
+            <svg>
+              <use xlink:href="images/sprite.svg#checkbox"></use>
+            </svg>
+          </span>
+        </label>
+
+        <button class="previous action-button" type="button">
+          Назад
+        </button>
+        <button class="next action-button" type="button">
+          Вперед
+        </button>
+      </fieldset>
+
+      <fieldset class="form__fieldset">
+        <h2 class="fs-title">Кастомные радиоточки</h2>
+        <h3 class="fs-subtitle">в разных состояниях</h3>
+
+        <label class="form__label">
+          <span class="">Стандартная</span>
+          <input class="form__box form__box--radio" type="radio" data-validate-field="radio" name="radio">
+          <span class="form__fake form__fake--radio"></span>
+        </label>
+        <label class="form__label">
+          <span class="">Стандартная</span>
+          <input class="form__box form__box--radio" type="radio" name="radio" data-validate-field="radio">
+          <span class="form__fake form__fake--radio"></span>
+        </label>
+        <label class="form__label">
+          <span class="">disabled</span>
+          <input class="form__box form__box--radio" type="radio" name="radio" data-validate-field="radio" disabled>
+          <span class="form__fake form__fake--radio"></span>
+        </label>
+        <label class="form__label">
+          <span class="">disabled checked</span>
+          <input class="form__box form__box--radio" type="radio" name="radio2" data-validate-field="radio2" disabled checked>
+          <span class="form__fake form__fake--radio"></span>
+        </label>
+
+        <button class="previous action-button" type="button">
+          Назад
+        </button>
+        <button class="next action-button" type="button">
+          Вперед
+        </button>
+      </fieldset>
+
+      <fieldset class="form__fieldset">
+        <h2 class="fs-title">Профили в соцсетях</h2>
+        <h3 class="fs-subtitle">Добавьте ссылки на ваши профили в соцсетях</h3>
+
+        <label>
+          <span class="hide">Twitter</span>
+          <input class="form__input" type="text" name="twitter" data-validate-field="twitter" placeholder="Twitter">
+        </label>
+        <label>
+          <span class="hide">Facebook</span>
+          <input class="form__input" type="text" name="facebook" data-validate-field="facebook" placeholder="Facebook">
+        </label>
+        <label>
+          <span class="hide">Google Plus</span>
+          <input class="form__input" type="text" name="gplus" data-validate-field="gplus" placeholder="Google Plus">
+        </label>
+        <button class="previous action-button" type="button">
+          Назад
+        </button>
+        <button class="next action-button" type="button">
+          Вперед
+        </button>
+      </fieldset>
+
+      <fieldset class="form__fieldset">
+        <h2 class="fs-title">Кастомный селект</h2>
+        <h3 class="fs-subtitle"></h3>
+        <div class="form__file-box">
+          <label class="form__file-label">
+            <span class="form__file-text">добавьте фотографию</span>
+            <input class="form__file hide file-js" accept=".jpg, .png, .gif" name="image[]" multiple data-validate-field="image" type="file">
+            <svg>
+              <use xlink:href="images/sprite.svg#image-icon"></use>
+            </svg>
+          </label>
+          <div class="form__preview"></div>
+        </div>
+
+
+        <label class="select">
+          <div class="hide">выберите страну</div>
+          <select class="hide js-select" name="country" data-validate-field="country">
+            <option value="Россия">Россия</option>
+            <option value="Китай" selected>Китай</option>
+            <option value="Индия">Индия</option>
+            <option value="Бразилия">Бразилия</option>
+            <option value="Мексика">Мексика</option>
+          </select>
+          <div class="select__header">
+            <span class="select__current"> fasdf 1</span>
+            <span class="select__icon">&times;</span>
+          </div>
+          <ul class="select__body">
+
+          </ul>
+        </label>
+
+        <label class="select">
+          <div class="hide">выберите страну</div>
+          <select class="hide js-select" name="country"  data-validate-field="country">
+            <option value="Россия">Россия</option>
+            <option value="Китай" selected>Китай</option>
+            <option value="Индия">Индия</option>
+            <option value="Бразилия">Бразилия</option>
+            <option value="Мексика">Мексика</option>
+          </select>
+          <div class="select__header">
+            <span class="select__current"></span>
+            <span class="select__icon">&times;</span>
+          </div>
+          <ul class="select__body">
+
+          </ul>
+        </label>
+
+        <button class="previous action-button" type="button" >
+          Назад
+        </button>
+        <button class="next action-button" type="button">
+          Вперед
+        </button>
+      </fieldset>
+
+      <fieldset class="form__fieldset">
+        <h2 class="fs-title">Личные данные</h2>
+        <h3 class="fs-subtitle">Мы никогда не передадим ваши данные</h3>
+        <label>
+          <span class="hide">Имя</span>
+          <input class="form__input" type="text" name="fname"  data-validate-field="fname" placeholder="Имя">
+        </label>
+        <label>
+          <span class="hide">Фамилия</span>
+          <input class="form__input" type="text" name="lname"  data-validate-field="lname" placeholder="Фамилия">
+        </label>
+        <label>
+          <span class="hide">Телефон</span>
+          <input class="form__input" type="tel" name="phone" data-validate-field="phone" placeholder="Телефон">
+        </label>
+        <textarea class="form__input form__input--textarea" name="address" data-validate-field="address" placeholder="Адрес"></textarea>
+
+        <button class="previous action-button" type="button">
+          Назад
+        </button>
+        <button class="submit action-button" type="submit">
+          Зарегистрироваться
+        </button>
+
+      </fieldset>
+
+
+    </form>
+
+
+
+
+  </main>
+  @@include('components/page/_3_footer.html')
+  @@include('components/page/_4_scripts.html')
+</body>
+
+</html>

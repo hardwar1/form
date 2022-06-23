@@ -1,0 +1,328 @@
+@import "global/*.scss";
+@import "../components/bem-blocks/**/*.scss";
+
+
+
+// =========== заголовки =========
+.fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  
+}
+
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+// =========== /заголовки =========
+
+// =========== progressbar =========
+.progressbar {
+  margin: 0 auto 30px;
+  position: relative;
+  height: 45px;
+  width: 238px;
+  counter-reset: step;
+
+  &:after,
+  &:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 9px;
+    z-index: -1;
+    transition: width 1s;
+  }
+
+  &:after {
+    background-color: #27ae60;
+    width: var(--progressbar-width);
+  }
+
+  &__item {
+    list-style-type: none;
+    color: transparent;
+    text-transform: uppercase;
+    font-size: 9px;
+    position: absolute;
+    width: fit-content;
+    left: --progressbar-left;
+    transform: translateX(-50%);
+    transition: color 0.3s;
+
+    &:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 20px;
+      line-height: 2;
+      display: block;
+      font-size: 10px;
+      color: #333;
+      background-color: white;
+      border-radius: 3px;
+      margin: 0 auto 5px auto;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    &--active:before {
+      background-color: #27ae60;
+      color: white;
+      transition: background-color 0.3s 0.8s, color 0.3s 0.8s;
+    }
+
+    &--text {
+      color: white;
+      transition: color 0.3s 0.7s;
+    }
+  }
+}
+// =========== /progressbar =========
+
+// =========== форма =========
+.form {
+  margin: 0 auto;
+
+  padding-top: 50px;
+  padding-bottom: 100px;
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/ZZ5H.gif") center / 50px no-repeat, rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s;
+  }
+
+  &--sending {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__fieldset {
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: none;
+    position: relative;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__label {
+    position: relative;
+    display: block;
+    text-align: left;
+    padding: 12px 0 12px 40px;
+  }
+
+  &__fake {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 4px solid #27ae60;
+    padding-left: 1px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: transparent;
+    }
+
+    &--radio {
+      border-radius: 50%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__box {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    outline: 0;
+    &:focus + .form__fake {
+      box-shadow: 0px 2px 7px 4px rgba(39, 174, 95, 0.8);
+    }
+
+    &:checked + .form__fake {
+      svg {
+        fill: #27ae60;
+      }
+    }
+
+    &:disabled + .form__fake {
+      border: 4px solid #7b7979;
+      background-color: rgb(199, 196, 196);
+    }
+
+    &:disabled:checked + .form__fake {
+      svg {
+        fill: #7b7979;
+      }
+    }
+
+    &--radio {
+      &:focus + .form__fake {
+        box-shadow: 0 2px 7px 4px rgba(39, 174, 95, 0.8);
+      }
+
+      &:checked + .form__fake::after {
+        background-color: #27ae60;
+      }
+
+      &:disabled:checked + .form__fake::after {
+        background-color: #7b7979;
+      }
+    }
+  }
+
+  &__input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-size: 13px;
+    resize: none;
+
+    &--textarea {
+      height: 110px;
+    }
+  }
+
+  &__file-label {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #27ae60;
+    margin-bottom: 30px;
+
+    &:hover {
+      background-color: rgb(204, 252, 220);
+    }
+  }
+
+  &__file:focus + svg {
+    fill: #27ae60;
+  }
+
+  &__preview {
+    margin-bottom: 30px;
+    img {
+      height: 60px;
+    }
+  }
+}
+// =========== /форма =========
+
+// =========== кнопки =========
+.action-button {
+  font-size: 13px;
+  min-width: 100px;
+  background-color: #27ae60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
+  }
+}
+// =========== /кнопки =========
+
+// =========== select =========
+.select {
+  text-align-last: left;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  position: relative;
+  display: block;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #27ae60;
+  }
+
+  &__current {
+    margin-right: auto;
+  }
+
+  &__icon {
+  }
+
+  &__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, top 0.6s, visibility 0s 0.4s;
+  }
+
+  &--active .select__body {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+    transition: opacity 0.4s, top 0.6s, visibility 0s;
+  }
+
+  &__item {
+    padding: 10px;
+    border: 1px solid #27ae60;
+    border-top: 0;
+  }
+}
+// =========== /select =========
